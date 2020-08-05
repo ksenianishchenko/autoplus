@@ -1,0 +1,9 @@
+<ul id="background" class="non-js-gallery" data-slide="{{slide}}">
+{{#each images}}
+{{#is @index ../page/slide}}
+    <li><img src="img/gallery/{{this}}" data-src="img/gallery/{{this}}" alt="{{../slideDescription}}" title=""/></li>
+    {{else}}
+    <li><img data-src="img/gallery/{{this}}" alt="{{../slideDescription}}" title=""/></li>
+{{/is}}
+{{/each}}
+</ul>

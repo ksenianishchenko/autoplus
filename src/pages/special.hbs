@@ -1,0 +1,65 @@
+---
+title: Coupons & Discounts in Berkeley/Albany CA | Auto Plus
+description: Auto Plus Berkeley specializes in Volkswagen and Audi repair and maintenance including Transmission, Brakes, Suspension, Turbocharger, and more.
+keywords: "Audi,Volkswagen,auto repair,service,maintenance,engines,transmissions,brakes,shocks,struts,suspension,timing belts,exhaust systems,air conditioning,service,oil change,Berkeley,Albany,El Cerrito,Richmond,Bay Area"
+slide: 15
+slideDescription: Auto repair experts in Albany, Berkeley, El Cerrito
+---
+<main class="wrapper wrapper-background">
+    <div class="coupons-wrap">
+        <a href="#0" class="coupons-print-button">
+            <i class="fa fa-print" aria-hidden="true"></i>Print
+        </a>
+        <div id="coupons" class="coupons-image-wrap">
+            <img src="img/couponsImage.jpg" title="Discount coupons" alt="Print Discount coupons" style="width:100%;"/> 
+        </div>
+        <a href="#0" class="coupons-print-button">
+            <i class="fa fa-print" aria-hidden="true"></i>Print
+        </a>
+    </div>
+</main>
+
+<script type="text/javascript">
+var printLinks = document.querySelectorAll('.coupons-print-button'); 
+for(var i = 0; i < printLinks.length; i++){
+    var link = printLinks[i];
+    if (link.addEventListener){
+        link.addEventListener('click', printCoupons);
+    } else {
+        link.attachEvent('onclick', printCoupons);
+    }
+}
+
+function printCoupons(e) {
+    if (e.preventDefault){
+        e.preventDefault();
+    } else {
+        e.returnValue = false;
+    }
+    var couponsElement = document.querySelector('#coupons');
+    var printableContent =  couponsElement.outerHTML;
+    var win = window.open('#', 'Discount_Coupons', 'location=yes,width=730, height=915');
+    var doc = win.document.open();
+    
+    var html =
+            '<!DOCTYPE html>' +
+            '<html>' +
+            '<head>' +
+            '<meta charset="utf-8" />' +
+            '<title>Auto Plus Discount Coupons</title>' +
+            '</head>' +
+            '<body>' +
+            printableContent +
+            '</body>' +
+            '</html>';
+            
+    doc.write(html);
+    var timeoutId = window.setTimeout(function(){
+        window.clearTimeout(timeoutId);
+        win.focus();
+        win.location.reload();
+        win.print();
+        win.close();
+    }, 100);
+}
+</script>
